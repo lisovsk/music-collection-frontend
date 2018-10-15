@@ -1,8 +1,8 @@
 import axios from "axios";
 // import API from '@/API/mainAPI';
 
-const baseURL = "http://localhost:8080/music-collection/api/";
-const headers = { Authorization: "Basic c3RyaW5nOnN0cmluZw==" };
+const baseURL = "http://10.5.0.7:8080/music-collection/api/";
+const headers = { Authorization: "Basic YWRtaW46YWRtaW4=" };
 
 export const axiosInstance = axios.create({
   baseURL,
