@@ -10,4 +10,7 @@ COPY . .
 
 EXPOSE 8081
 
+ENV PORT 8081
+ENV NODE_PORT 8081
+
 CMD ["npm", "run", "serve"]
