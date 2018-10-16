@@ -1,7 +1,7 @@
 import axios from "axios";
 // import API from '@/API/mainAPI';
 
-const baseURL = "http://10.5.0.7:8080/music-collection/api/";
+const baseURL = "http://10.5.0.7:8080/songbox-house/api/";
 const headers = { Authorization: "Basic YWRtaW46YWRtaW4=" };
 
 export const axiosInstance = axios.create({

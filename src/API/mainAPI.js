@@ -26,7 +26,7 @@ export default {
       //   console.log(genres);
       //   console.log(title);
       return axiosInstance
-        .post("http://localhost:8080/music-collection/api/search", {
+        .post("http://localhost:8080/songbox-house/api/search", {
           artists,
           collectionId,
           genres,
