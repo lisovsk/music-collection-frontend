@@ -21,12 +21,8 @@ export default {
         });
     },
     searchAndDownload(artists, collectionId, genres, title) {
-      //   console.log(artists);
-      //   console.log(collectionId);
-      //   console.log(genres);
-      //   console.log(title);
       return axiosInstance
-        .post("http://localhost:8080/songbox-house/api/search", {
+        .post("search", {
           artists,
           collectionId,
           genres,
