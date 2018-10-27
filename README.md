@@ -1,4 +1,4 @@
-# music-collection-frontend
+# songbox-house-front
 
 ## Project setup
 ```
