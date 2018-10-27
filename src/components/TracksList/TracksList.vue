@@ -1,6 +1,6 @@
 <template>
 <div class="tracks-list">
-  {{tracks}}
+  <!-- {{tracks}} -->
   <el-table
     :data="tracks"
     style="width: 100%"

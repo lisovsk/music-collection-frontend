@@ -62,7 +62,8 @@ export default {
       // console.log(1);
       // console.log(this.tracks[numberOfTrack].title);
       if (this.tracks.length) {
-        // API.trackController.downloadTracks();
+        // console.log(1);
+
         API.searchController
           .searchAndDownload(
             this.tracks[numberOfTrack].artist,
@@ -71,11 +72,24 @@ export default {
             this.tracks[numberOfTrack].title
           )
           .then(res => {
-            API.trackController.download(res.trackId, res.fileName).then(() => {
-              this.$store.commit("deleteFromDownloadableTracks", numberOfTrack);
-              this.downloadTrack(0);
+            API.trackController.downloadTracks([res.trackId, 158]).then(() => {
+              // this.$store.commit('deleteFromDownloadableTracks', numberOfTrack);
+              // this.downloadTrack(0);
             });
           });
+        // API.searchController
+        //   .searchAndDownload(
+        //     this.tracks[numberOfTrack].artist,
+        //     this.tracks[numberOfTrack].collectionId,
+        //     this.tracks[numberOfTrack].genres,
+        //     this.tracks[numberOfTrack].title,
+        //   )
+        //   .then(res => {
+        //     API.trackController.download(res.trackId, res.fileName).then(() => {
+        //       // this.$store.commit('deleteFromDownloadableTracks', numberOfTrack);
+        //       // this.downloadTrack(0);
+        //     });
+        //   });
       }
     },
     deleteFromDownloadableTracks(i) {

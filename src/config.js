@@ -19,13 +19,14 @@ export const axiosMultipartInstance = axios.create({
   baseURL,
   headers: {
     "Content-Type": "multipart/x-mixed-replace; boundary=END",
-    "X-Accel-Buffering": "no",
+    // responseType: "blob",
+    // "X-Accel-Buffering": "no",
     // 'Accept-Ranges': 'bytes',
     ...headers
   }
 });
 
-export let collectionId = 5;
+export let collectionId = 28;
 
 // API.musicCollectionController.findAll().then((res) => {
 //     console.log(res);
