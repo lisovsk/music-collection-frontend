@@ -1,12 +1,12 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import storageAPI from "@/API/storageAPI";
-
 Vue.use(Vuex);
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   state: {
-    downloadableTracks: storageAPI.getDownloadableTracks() || []
+    downloadableTracks: storageAPI.getDownloadableTracks() || [],
+    collectionId: 7
   },
   mutations: {
     pushToDownloadableTracks(state, newDownloadableTracks) {
@@ -16,7 +16,11 @@ export default new Vuex.Store({
     deleteFromDownloadableTracks(state, i) {
       state.downloadableTracks.splice(i, 1);
       storageAPI.setNewDownloadableTracks(state.downloadableTracks);
+    },
+    setCollectionId(state, collectionId) {
+      state.collectionId = collectionId;
     }
   },
   actions: {}
 });
+export default store;

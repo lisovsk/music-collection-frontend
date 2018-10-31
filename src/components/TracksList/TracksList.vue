@@ -1,6 +1,5 @@
 <template>
 <div class="tracks-list">
-  <!-- {{tracks}} -->
   <el-table
     :data="tracks"
     style="width: 100%"
@@ -47,7 +46,7 @@
       <template 
         slot-scope="scope">
         <div class="download"
-        @click="searchAndDownload(scope.row.artist, collectionId, [], scope.row.title)"
+        @click="download(scope.row)"
         >
           <i
             class="el-icon-download"
@@ -60,8 +59,7 @@
 </template>
 
 <script>
-// import API from "@/API/mainAPI";
-import { collectionId } from "@/config";
+import API from "@/API/mainAPI";
 
 export default {
   props: {
@@ -73,22 +71,26 @@ export default {
     }
   },
   data() {
-    return {
-      collectionId
-    };
+    return {};
   },
 
   methods: {
     handleSelectionChange(val) {
       this.multipleSelection = val;
     },
-    searchAndDownload(artist, collectionId, genres, title) {
-      this.$store.commit("pushToDownloadableTracks", {
-        artist,
-        collectionId,
-        genres,
-        title
-      });
+    // searchAndDownload(artist, collectionId, genres, title) {
+    //   this.$store.commit('pushToDownloadableTracks', {
+    //     artist,
+    //     collectionId,
+    //     genres,
+    //     title
+    //   });
+    // }
+    download(songDto) {
+      API.trackController.downloadOneFromSearch(
+        this.$store.state.collectionId,
+        songDto
+      );
     }
   }
 };

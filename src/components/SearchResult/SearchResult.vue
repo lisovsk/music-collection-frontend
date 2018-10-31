@@ -47,7 +47,7 @@ export default {
     submitQuery(query) {
       this.spinner = true;
       API.searchController.search(query).then(res => {
-        this.tracks = res;
+        this.tracks = res.filter(track => track.resource !== "Youtube");
         this.spinner = false;
       });
     }

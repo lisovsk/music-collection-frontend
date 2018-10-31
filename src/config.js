@@ -1,7 +1,9 @@
 import axios from "axios";
-// import API from '@/API/mainAPI';
+import store from "@/store";
+import musicCollectionAPI from "@/API/musicCollectionAPI";
+import _ from "lodash";
 
-const baseURL = "http://10.5.0.7:8080/songbox-house/api/";
+const baseURL = "http://localhost:8080/songbox-house/api/";
 const headers = { Authorization: "Basic YWRtaW46YWRtaW4=" };
 
 export const axiosInstance = axios.create({
@@ -19,15 +21,19 @@ export const axiosMultipartInstance = axios.create({
   baseURL,
   headers: {
     "Content-Type": "multipart/x-mixed-replace; boundary=END",
-    // responseType: "blob",
-    // "X-Accel-Buffering": "no",
-    // 'Accept-Ranges': 'bytes',
     ...headers
   }
 });
 
-export let collectionId = 28;
-
-// API.musicCollectionController.findAll().then((res) => {
-//     console.log(res);
-// });
+(async function() {
+  let collectionId = null;
+  await musicCollectionAPI.findAl().then(item => {
+    collectionId = _.get(item, "[0].collectionId");
+  });
+  if (collectionId === undefined) {
+    await musicCollectionAPI.create("base4").then(item => {
+      collectionId = item.collectionId;
+    });
+  }
+  store.commit("setCollectionId", collectionId);
+})();
