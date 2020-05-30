@@ -22,8 +22,8 @@
     </template>
     </el-table-column>
     <el-table-column
-      property="artist"
-      label="Artist"
+      property="artists"
+      label="Artists"
       width="160">
     </el-table-column>
     <el-table-column
@@ -35,7 +35,7 @@
       property="bitRate"
       label="BPM"
       width="70">
-    </el-table-column>
+    </el-table-column/>
     <el-table-column
       property="duration"
       label="Duration"
@@ -47,7 +47,7 @@
       <template 
         slot-scope="scope">
         <div class="download"
-        @click="searchAndDownload(scope.row.artist, collectionId, [], scope.row.title)"
+        @click="searchAndDownload(scope.row.artists, collectionId, [], scope.row.title)"
         >
           <i
             class="el-icon-download"
