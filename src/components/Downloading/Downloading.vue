@@ -91,7 +91,9 @@ export default {
     // },
   },
   created() {
-    this.downloadTrack(0);
+    for (var i = 0; i < this.tracks.length; i++) {
+      this.downloadTrack(i);
+    }
   }
 };
 </script>

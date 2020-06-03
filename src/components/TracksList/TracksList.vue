@@ -1,6 +1,5 @@
 <template>
 <div class="tracks-list">
-  {{tracks}}
   <el-table
     :data="tracks"
     style="width: 100%"
@@ -22,12 +21,12 @@
     </template>
     </el-table-column>
     <el-table-column
-      property="artists"
+      property="artistsTitle.artists"
       label="Artists"
       width="160">
     </el-table-column>
     <el-table-column
-      property="title"
+      property="artistsTitle.title"
       label="Title"
       width="150">
     </el-table-column>
@@ -37,7 +36,7 @@
       width="70">
     </el-table-column/>
     <el-table-column
-      property="duration"
+      property="durationSec"
       label="Duration"
       width="80">
     </el-table-column>
@@ -47,7 +46,7 @@
       <template 
         slot-scope="scope">
         <div class="download"
-        @click="searchAndDownload(scope.row.artists, collectionId, [], scope.row.title)"
+        @click="searchAndDownload(scope.row.artistsTitle.artists, collectionId, [], scope.row.artistsTitle.title)"
         >
           <i
             class="el-icon-download"
